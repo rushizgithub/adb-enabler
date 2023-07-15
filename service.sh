@@ -15,12 +15,12 @@ function waitBootCompletion()
     done
 }
 
-function disableBatteryOptimizations()
+function enableadb()
 {
-    settings put global adaptive_battery_management_enabled 0
-    settings put secure adaptive_charging_enabled 0
-    settings put secure adaptive_connectivity_enabled 0
-    settings put global wifi_suspend_optimizations_enabled 0
+    settings put global adb_enabled 1
+    settings put secure adb_wifi_enabled 1
+    settings put secure adb_allowed_connection_time 1
+    settings put global usb_mass_storage_enabled 1
 }
 
-(((sleep 33; waitBootCompletion; disableBatteryOptimizations)  0<&- &>"/dev/null" &) &)
+(((sleep 33; waitBootCompletion; enableadb)  0<&- &>"/dev/null" &) &)
